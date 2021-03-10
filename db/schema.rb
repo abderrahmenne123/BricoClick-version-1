@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_091121) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin", default: false
+    t.string "role"
     t.index ["avatar"], name: "index_users_on_avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["firstname"], name: "index_users_on_firstname"

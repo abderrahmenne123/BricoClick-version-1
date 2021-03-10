@@ -28,7 +28,7 @@
     <a class="nav-link"> <%= link_to 'Profile', user_path(current_user) %></a>
   </li>
   &nbsp;&nbsp;&nbsp;
-  <% if current_user.admin == true %>
+  <% if current_user.role == 'supadmin' %>
     <li class="nav-item">
     <a class="nav-link"> <%= link_to 'Usres',  users_path(current_user) %></a>
   </li>

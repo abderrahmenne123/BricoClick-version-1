@@ -28,7 +28,8 @@ class UsersController < ApplicationController
       :avatar,
       :mobile,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      role:[]
     )
   end
 end

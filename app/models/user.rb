@@ -4,10 +4,12 @@ class User < ApplicationRecord
   
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 def full_name
  "#{firstname} #{lastname}"
           
  end
-         
+     before_save do
+       self.role.gsub!(/[\[\]\""]/,"") if attribute_present?("role")
+     end    
 end

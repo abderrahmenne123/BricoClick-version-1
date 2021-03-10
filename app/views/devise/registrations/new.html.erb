@@ -21,6 +21,14 @@
   </div>
   
   
+  <div class="field">
+  
+  <%= label_tag 'role_technicien', 'technicien' %>
+  <%= check_box_tag 'user[role][]','technicien', checked('technicien') ,id: 'role_technicien' %>
+  <%= label_tag 'role_client', 'client' %>
+  <%= check_box_tag 'user[role][]','client', checked('client') ,id: 'role_client' %>
+ 
+</div>
   
   
   <div class="field">

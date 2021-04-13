@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Devisetest</title>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFxXHZC7Gdr0NRp_rrWpRpmtjtoLQbs_E&callback=initMap"
+  type="text/javascript"></script>
     <%= csrf_meta_tags %>
    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -12,7 +14,7 @@
   <body>
 
   <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="/users/sign_in">Petsy</a>
+  <a class="navbar-brand" href="/home/private">Petsy</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,16 +32,44 @@
   &nbsp;&nbsp;&nbsp;
   <% if current_user.role == 'supadmin' %>
     <li class="nav-item">
+    
     <a class="nav-link"> <%= link_to 'Usres',  users_path(current_user) %></a>
   </li>
+  &nbsp;&nbsp;&nbsp;
+  <li class="nav-item">
+    <a class="nav-link"> <%= link_to 'jobs',  jobs_path() %></a>
+  </li>
   <% end %>
+  
   &nbsp;&nbsp;&nbsp;
   
     <li class="nav-item">
     <a class="nav-link"> <%= link_to 'Edit My Profile', edit_user_path(current_user) %></a>
     </li>
     
-
+    &nbsp;&nbsp;&nbsp;
+    
+    <li class="nav-item">
+    <a class="nav-link"> <%= link_to 'liste des profile',jobprofiles_path() %></a>
+    </li>
+    &nbsp;&nbsp;&nbsp;
+    
+    </li>
+ 
+ <a class="nav-link">
+  <li class="nav-item">
+  <%=  link_to "conversations", conversations_path %>
+ </a>
+  
+ </li>
+ <a class="nav-link">
+ <li class="nav-item">
+ <%=  link_to "demandes",  conversatdemandes_path	 %>
+</a>
+ 
+</li>
+    <br\>
+    
       <% else %>
       <li class="nav-item">
   <%=  link_to "Se connecter", new_user_session_path %>
@@ -48,16 +78,19 @@
   <li class="nav-item">
   <%=  link_to "S'inscrire", new_user_registration_path %>
   
- </li>
+  
+ 
      <% end %>
     </ul>
 
   </div>
 </nav>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
-
+    
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

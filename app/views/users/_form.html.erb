@@ -2,6 +2,7 @@
     <% if user.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        
   
         <ul>
           <% user.errors.full_messages.each do |message| %>
@@ -10,7 +11,16 @@
         </ul>
       </div>
     <% end %>
-  
+
+   
+  <div class="form-group">
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar ,style: "width: 200px; display: block" %>
+    <% end %>
+
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar, class:  "form-control" %>
+  </div>
     <div class="field">
       <%= form.label :firstname %>
       <%= form.text_field :firstname %>

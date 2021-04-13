@@ -1,0 +1,28 @@
+<div class="columns">
+  
+    <h3 class="title is-1">All Users</h3>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+     
+        <th>users</th>
+        
+        
+      </tr>
+    </thead>
+  
+    <tbody>
+    <% User.all.each do |user| %>
+        <% if current_user.id != user.id  %>
+            <tr>
+            <td><%= link_to "Demande #{user.full_name}", conversatdemandes_path(sender_id: current_user.id, recipient_id: user.id), method: "post" %></td>
+            
+            </tr>
+           <% end %>
+    <% end %>
+  </tbody>
+  
+  
+  </table>
+  </div>
+  

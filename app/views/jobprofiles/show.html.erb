@@ -1,0 +1,37 @@
+<div class="d-flex justify-content-center" >
+<p><strong> <h3>Profiles: </h3></strong></p>
+</div>
+<div class="d-flex justify-content-center" >
+
+<div class="card" style="width: 18rem;">
+<p>
+<% if @jobprofile.user.avatar.attached? %>
+    <%= image_tag  @jobprofile.user.avatar ,style: "width: 50px; display: block" %>
+<% else %>
+<%= image_tag ("aa.png") ,style: "width: 50px; display: block" %>
+<% end %>
+</p>
+  <div class="card-body">
+    <h5 class="card-title"><p><%= @jobprofile.user.full_name %> </p></h5>
+    
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong> Email: </strong><%= @jobprofile.user.email %></li>
+    <li class="list-group-item"><strong> Adresse: </strong><%= @jobprofile.adresse %></li>
+    <li class="list-group-item"><strong> Mobile: </strong><%= @jobprofile.user.mobile %></li>
+    <li class="list-group-item"><strong> Ville: </strong><%= @jobprofile.ville %></li>
+    <li class="list-group-item"><strong> Gallery: </strong>
+    <% (0...@jobprofile.gallery.count).each do |gallery| %>
+    <%= image_tag @jobprofile.gallery[gallery], style: "width: 100px;" "card-img-top" %>
+    <% end %>
+    
+    </li>
+    <li class="list-group-item"><strong> Prix: </strong><%= @jobprofile.tarif %></li>
+    <li class="list-group-item"><strong> Jobe: </strong> <%= @jobprofile.namejob %></li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+</div>

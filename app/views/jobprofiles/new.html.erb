@@ -1,0 +1,48 @@
+<h1> New JobProfile </h1>
+
+<%= form_with(model: @jobprofile, local: true) do |f| %>
+    <% if @jobprofile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@jobprofile.errors.count, "error") %> prohibited this user from being saved:</h2>
+  
+        <ul>
+          <% @jobprofile.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+  <div class="field">
+    <%= f.label :adresse %><br />
+    <%= f.text_field :adresse, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :ville %><br />
+    <%= f.text_field :ville, autofocus: true %>
+  </div>
+  <div class="field">
+      <%= f.label :gallery %>
+      <%= f.file_field :gallery, multiple: true %>
+    </div>
+  <div class="field">
+    <%= f.label :tarif %><br />
+    <%= f.text_field :tarif, autofocus: true %>
+  </div>
+  <div class="field" >
+    <%= f.label :user_id ,hidden:true %><br />
+    <%= f.text_field :user_id,:value => current_user.id, autofocus: true, hidden: true  %>
+  </div><div class="field">
+  <%= f.label :Jobs %><br />
+ 
+  <%= f.select :namejob, Job.all.collect { |p| [ p.name ] }, include_blank: 'selection votre travail' %>
+</div>
+
+
+  <div class="actions">
+    <%= f.submit "ADD" %>
+  </div>
+  
+<% end %>
+
+

@@ -1,0 +1,65 @@
+<h1> New User </h1>
+
+<%= form_with(model: @user, local: true) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :mobile %><br />
+    <%= f.text_field :mobile, autofocus: true %>
+  </div>
+  
+  
+  <div class="field">
+  
+  <%= label_tag 'role_technicien', 'technicien' %>
+  <%= check_box_tag 'user[role][]','technicien', checked('technicien') ,id: 'role_technicien' %>
+  <%= label_tag 'role_client', 'client' %>
+  <%= check_box_tag 'user[role][]','client', checked('client') ,id: 'role_client' %>
+ 
+</div>
+  
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "ADD" %>
+  </div>
+  
+<% end %>
+
+

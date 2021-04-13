@@ -1,4 +1,50 @@
-<h1>Bienvenue sur mon site </h1>
-<p>
+<p id="notice"><%= notice %></p>
 
-</p>
+<h1> Job Profiles</h1>
+
+  
+<%= form_tag jobprofiles_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search1" %>
+  <% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+   
+      <th>adresse</th>
+      <th>ville</th>
+      <th>gallery</th>
+      <th>tarif</th>
+      <th>user</th>
+    
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Jobprofile.all.each do |jobprofile| %>
+    <tr>
+      
+       
+      <td><%= jobprofile.adresse %></td>
+      <td><%= jobprofile.ville %></td>
+      <td> 
+      
+      <% (0...jobprofile.gallery.count).each do |gallery| %>
+        <%= image_tag jobprofile.gallery[gallery], style: "width: 100px;"  %>
+        <% end %>
+      </td>
+      <td><%= jobprofile.tarif %></td>
+      <td><%= jobprofile.user.full_name %></td>
+     
+     
+        
+        
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+
+
+

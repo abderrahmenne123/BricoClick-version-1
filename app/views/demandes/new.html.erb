@@ -1,0 +1,9 @@
+<h1> Bonjour </h1>
+<%= form_for [@conversatdemande, @demande] do |f| %>
+    <%= f.text_field :body, class: "textarea", placeholder: "Inquire about a trade..." %>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <div class="text-align-right">
+    
+      <%= f.submit "Send Demande" %>
+    </div>
+  <% end %>

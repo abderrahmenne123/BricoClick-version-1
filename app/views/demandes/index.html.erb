@@ -1,0 +1,56 @@
+
+<%= link_to 'New Demande', new_conversatdemande_demande_path	 %>
+
+<h1 class="title is-4">Demande <%= @conversatdemande.recipient.full_name %></h1>
+<% if @over_ten %>
+  <%= link_to "Show previous", '?m=all', class:'button is-link' %>
+<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th>ID</th>
+      <th>Name</th>
+      <th>status</th>
+      <th>demande</th>
+     
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  <% @demandes.each do |demande| %>
+    <% if demande.body %>
+      <% user = User.find(demande.user_id) %>
+      
+      <tr>
+      
+      <td> <%= demande.id %></td>
+      <td><%= user.full_name %></td>
+      <% if demande.status == 'accepter' %>
+      <td><strong><p class="text-success" ><%= demande.status  %></p></strong></td>
+      <% end %>
+      <% if demande.status == 'refuser' %>
+        <td><strong><p class="text-danger" ><%= demande.status  %></p></strong></td>
+        <% end %>
+        <% if demande.status == 'encours' %>
+      
+      
+      <td><strong><p class="text-warning" ><%= demande.status  %></p></strong></td>
+      
+      <% end %>
+      
+      <td> <%= demande.body %></td>
+      
+      
+    
+      <td><%= link_to 'Accepter',		conversatdemande_demandes_path	,class: "btn btn-success" %></td>
+      <td><%= link_to 'Refuser',    new_conversatdemande_demande_path ,class: "btn btn-danger"	 %></td>
+      
+      </tr>
+    <% end %>
+  <% end %>
+
+  </tbody>
+  </table>
